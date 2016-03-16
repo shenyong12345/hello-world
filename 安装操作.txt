@@ -1,0 +1,17 @@
+http://www.golaravel.com/post/install-and-run-laravel-5-x-on-windows/
+http://www.golaravel.com/
+
+www。laravel-china.org
+
+
+
+
+学习视频操作
+http://laravelbase.com/collections/1/36   laravel文档攻略
+https://lvwenhan.com/laravel/432.html
+http://laravelacademy.org/post/306.html    很好的laravel学习
+http://www.baiduandgoogle.com/
+
+https://segmentfault.com/a/1190000002584573  数据迁移
+
+

@@ -1,0 +1,40 @@
+
+laravel中常见命令操作
+
+
+安装Laravel框架
+ (1) 命令：composer create-project laravel/laravel --prefer-dist
+           或者命令 composer create-project laravel/laravel laravelapp --prefer-dist  创建一个laravelapp项目
+
+2：php artisan make:middleware TestMiddleware
+
+这样会在/app/Http/Middleware目录下生成一个TestMiddleware.php文件
+
+
+3：php artisan make:controller ArticleController
+   创建 Admin\CommentsController  php artisan make:controller Admin/CommentsController
+
+这里只是使用了artisan得make:controller命令，其实artisan可以干的事情很多；
+
+上面的命令给我们在app/Http/Controllers/目录下生成了ArticleController.php index方法
+们将routes.php中原来的注册路由全部删掉，只保留上面这一行代码：这行代码的意思是，当用户请求我们的网站跟目录的时候，我需要找到ArticleController并执行它的index方法，接下来，我们就需要创建我们的ArticleController了：
+
+在命令行中执行：
+
+php artisan make:controller ArticleController
+
+这里只是使用了artisan得make:controller命令，其实artisan可以干的事情很多；
+
+上面的命令给我们在app/Http/Controllers/目录下生成了ArticleController.php，我们打开它来看看：
+
+在这个文件里面，Laravel帮我们生成了一堆的方法：index()，show()，create()...等，然后我们刚刚在Router(routes.php文件)中注册的路由需要使用ArticleController的index方法
+
+
+3：php artisan migrate 数据库迁移命令执行 
+
+4：可以使用命令行创建迁移文件：php artisan make:migration create_msgs_table
+ 目录：database/migrations/目录
+
+5：执行数据填充命令
+     php artisan db:seed
+

@@ -1,0 +1,306 @@
+﻿Laravel框架入门
+讲师：刘士龙
+QQ交流群：291498732
+
+第1讲：Laravel简介
+1. Laravel框架简介
+    (1) MVC框架
+        PHP应用程序的开发形式：
+            直接使用PHP语言进行面向过程的网页开发
+            使用面向对象形式
+            使用MVC框架，极大地提高生产力
+        MVC框架基本思想：
+            把应用程序强制性地分划成三部分
+                模型层：Model层，即M，数据处理，承担网站功能最复杂的部分
+                视图层：View层，即V，数据展示，展示数据给用户
+                控制器层：Controller层，即C，处理业务逻辑（接收用户请求，返回用户响应）
+        常用的MVC框架：
+            ThinkPHP框架
+            CodeIgniter框架
+            Laravel框架
+            Symfony框架
+            Zend Framwork
+            YII框架
+        PHP框架流行度统计：http://www.sitepoint.com/best-php-framework-2015-sitepoint-survey-results/
+2. 课程内容概要
+    (1) 学习Laravel框架开发准备
+    (2) Laravel开发环境的搭建 
+    (3) Laravel基础知识：路由、控制器、模型、视图
+    (4) Laravel应用程序实战：留言板应用程序
+3. Laravel学习准备工作
+    (1) PHP开发环境
+        phpstudy集成开发环境
+        开发工具：sublime text、phpstorm
+        环境要求：php5.4+
+            本课程使用是php5.5
+            新特性：
+                php数组新语法，[]
+                命名空间
+                闭包函数
+    (2) PHP-FIG
+        官方网站：http://www.php-fig.org/
+        PHP-FIG：PHP Framework Interop Group
+        作用：制定了一系列PHP开发的规范，这些规范是未来PHP框架所需要遵循的规范
+        包含的内容：
+            PSR-0
+            PSR-1
+            PSR-2
+            PSR-3
+            PSR-4
+    (3) composer
+        官方网站：https://getcomposer.org/
+        作用：是 PHP 用来管理依赖（dependency）关系的工具。你可以在自己的项目中声明所依赖的外部工具库（libraries），Composer 会帮你安装这些依赖的库文件。    
+4. 几个网站
+    http://laravel.com/
+    http://www.golaravel.com/
+    http://laravel-china.org/
+    https://github.com/
+    http://stackoverflow.com/
+    http://baigoogledu.com/
+
+第2讲：使用Composer
+1. Composer安装
+    (1) 前提条件
+        PHP环境：5.4+，本课程是php5.5
+        PHP扩展：开启openssl扩展
+    (2) 需要明确php.exe文件的路径
+        可以通过phpinfo查看php.ini路径，从而得知php.exe文件的路径 
+    (3) 安装composer
+2. 可用的Composer库
+    (1) 意义：提供了下载和共享外部库的仓库
+    (2) 可用的Composer库
+3. 使用Composer
+    (1) 通过命令行下载资源
+        'install': 直接按照composer.json配置文件指明，下载依赖库
+        'require': 可以直接下载依赖库，同时把依赖库配置信息写入到composer.json文件中
+    (2) 借助配置文件下载资源
+        require配置项
+            "库完整名称": "版本号"
+    (3) 使用下载到的资源
+        下载到的外部库，会自动位于当前目录下的vendor目录中
+        使用下载资源时，直接在应用程序入口文件中，引入'vendor/autoload.php'文件，然后就可以直接使用外部库命名空间和类信息
+4. 网站资源：
+    http://www.phpcomposer.com/
+    https://packagist.org/ 
+
+第3讲：下载Laravel框架
+1. 安装Laravel框架
+    (1) 命令：composer create-project laravel/laravel --prefer-dist
+    (2) laravel/laravel和laravel/framework
+        laravel/laravel：laravel框架的示例程序，已经包含laravel框架源代码和其他的外部库
+        laravel/framework：仅仅Laravel框架的源代码
+2. Laravel框架目录结构
+    (1) app目录：应用程序的主要目录，大部分工作都在这个目录下进行（模型文件、控制器文件）
+    (2) config目录：记录了Laravel框架的常用配置文件信息
+    (3) database目录：数据库迁移 migrate
+    (4) public目录：应用程序的入口文件，同时也是静态资源文件目录（css、javascript、images）
+    (5) resources目录：视图文件目录
+    (6) vendor目录：外部库目录（包含Laravel框架源代码）
+    (7) .env文件：Laravel框架配置文件
+3. 运行第1个Laravel应用程序
+    (1) 直接运行：通过url访问public目录，直接运行
+    (2) 配置虚拟主机运行：phpstudy配置
+        站点管理器
+        监听端口号配置
+4. 几个网站
+    http://www.golaravel.com/laravel/docs/5.0/ 
+
+第4讲：配置开发工具
+1. sublime text配置以支持Laravel框架
+    (1) laravel自动代码提示插件：laravel相关
+    (2) blade模板插件：blade相关
+2. phpstorm配置以支持Laravel框架
+    (1) 工具：ide-helper
+    (2) 离线版：_ide_helper.php文件，直接把该文件复制到laravel应用程序的根目录下即可
+3. 网站资源
+    https://github.com/barryvdh/laravel-ide-helper
+    http://lvwenhan.com/laravel/403.html  
+
+第5讲：数据库迁移
+1. 数据库迁移简介
+    (1) migrate简介
+        方便团队开发，一次更改，团队成员都会影响到
+        直接使用PHP代码，而不是使用SQL语句来操作数据库
+    (2) 配置数据库账号信息: .env配置文件
+    (3) php artisan migrate 数据库迁移命令执行
+        命令行工具：sublime插件，terminal
+    (4) 删除自带的用户认证模块: php artisan fresh
+2. 创建msgs数据表
+    (1) 创建数据库文件
+        目录：database/migrations/目录
+        文件名：年_月_日_时分秒_create_tableName_table.php
+        可以使用命令行创建迁移文件：php artisan make:migration create_msgs_table
+        msgs表结构：
+            留言id    
+            留言标题
+            留言发表者
+            留言内容
+            留言发表时间
+    (2) migrate
+    网络资源:https://segmentfault.com/a/1190000002584573
+第6讲：数据库填充
+1. 创建模型类
+    (1) 一个数据库模型类对应一个数据表
+    (2) 目录：app/目录下直接创建
+        文件名：表名.php
+            表名要求首字母大写，并且去掉s后缀
+            比如：msgs数据表，所对应的模型类文件为Msg.php
+    (3) 模型类结构：类名 extends Model
+2. 数据填充
+    (1) 数据填充文件
+        位置：database/seeds/
+        文件名：表名TableSeeder.php
+        数据填充文件基本结构：类名 extends Seeder
+    (2) 执行数据填充命令
+        在database/seeds/DatabaseSeeder.php文件中调用数据填充命令
+        php artisan db:seed
+        可能会出现问题，会提示一些类不能用
+            引入类的完全命名空间名
+            可以使用composer命令：composer dump-autoload
+
+第7讲：路由功能
+1. Laravel5应用程序目录结构剖析
+    (1) app目录：应用程序核心目录，程序员所做的大部分工作都在此
+        Http目录：控制器文件目录、路由文件（routes.php）目录。
+        模型文件：默认情况下，模型类文件直接在app/目录下。
+    (2) config目录：应用程序配置文件目录
+        .env配置文件，是给出了最常用的配置，这些配置会被config目录中的配置文件调用。
+    (3) database目录：数据库迁移目录
+    (4) public目录：应用程序入口文件目录，同时也是静态资源文件目录（CSS文件、JS文件、图片文件）。
+    (5) resources目录：最重要的视图文件目录。
+    (6) storage目录：应用程序动态生成的日志、缓存、生成视图文件等目录。
+2. Laravel5路由功能的使用
+    (0) 路由作用：把用户的HTTP请求，交给指定的控制器或者功能来处理它。
+    (1) 路由的三种常见形式
+        HTTP请求类型路由：
+            Route::get('url信息', '处理的逻辑地址或功能代码');
+            Route::put('url信息', '处理的逻辑地址或功能代码');
+            Route::post('url信息', '处理的逻辑地址或功能代码');
+            Route::delete('url信息', '处理的逻辑地址或功能代码');
+        Resource路由：RESTful路由，url和控制器中的7个标准RESTful动作相绑定
+            Route::resource('url相关信息', '控制器名称');
+        控制器路由：url和控制器中的所有动作（只需要按照指定的规范来编写动作即可）
+            Route::controller('url相关信息', '控制器名称');
+    (2) 路由的处理：路由的处理有两种形式
+        把路由的处理交给控制器中的某个动作处理
+        直接处理路由（使用闭包函数形式处理）
+    (3) 路由参数
+        Route::get('view/{id}', function($id) {
+
+        });
+3. 网络资源：
+    http://www.golaravel.com/laravel/docs/5.0/routing/
+    http://laravelbase.com/sections/1/posts/46  
+
+第8讲：控制器
+1. 使用artisan命令创建控制器
+    (1) 创建控制器的方法
+        手工创建：自己创建控制器类，实现控制器类中的一些功能
+            控制器位于app/Http/Controllers/目录下
+            控制器名字是 “控制器名Controller”形式
+            控制器需要继承Laravel框架的控制器
+        命令行形式：artisan命令
+    (2) artisan命令封装了Laravel框架开发中的绝大多数命令，可以方便程序员进行Laravel应用程序的开发。
+        php artisan make:controller 控制器名
+        使用artisan命令时，务必要在Laravel应用程序的根目录下运行（因为根目录下才有artisan文件）。
+    (3) 说明：
+        当使用artisan命令创建好控制器后，控制器中已经为我们提供了一些基本方法（7个）；本质上这7个方法就是标准RESTful形式URL。
+            index
+            create
+            store
+            show 
+            edit
+            update
+            destroy
+2. 控制器和路由
+    (1) 为控制器绑定路由时，可以直接使用HTTP请求形式的路由
+        需要每一个URL绑定到控制器中的某一个动作上
+        在app/Http/routes.php文件中
+            Route::get('view', 'MsgController@view');
+    (2) RESTful形式的资源控制器路由（只支持7种动作）
+        Route::resource('msg', 'Msgcontroller');
+    (3) 隐式控制器路由
+        Route::controller('msg', 'MsgController');
+3. 网络资源：
+    http://www.golaravel.com/laravel/docs/5.0/artisan/
+    http://www.golaravel.com/laravel/docs/5.0/controllers/  
+    http://laravelbase.com/sections/1/posts/48
+
+第9讲：视图
+1. 控制器中加载视图
+    (1) 可以直接使用return "字符串形式";，返回视图文件源代码。
+    (2) 在控制器动作中返回视图文件。
+        return view('视图文件名');
+        注意：视图文件默认位于resources/views/目录下，文件扩展名是.php。
+2. 控制器传递数据给视图
+    (1) 传统形式：view('视图文件')->with('key', 'value');
+    (2) 魔术方法形式：view('视图文件')->withKeyName('value');
+3. blade模板
+    (1) 视图文件可以是PHP原生代码文件，也可以使用Laravel框架自带的blade模板。
+    (2) blade模板：
+        blade模板文件的扩展名：.blade.php
+        blade模板文件支持 layout 布局、原生PHP代码、blade标签等等。
+    (3) layout布局
+        @yield
+        @extends
+        @section
+4. 网络资源：
+    http://www.golaravel.com/laravel/docs/5.0/views/ 
+    http://www.golaravel.com/laravel/docs/5.0/templates/ 
+
+第10讲：留言板实例 —— 显示所有留言
+1. 控制器中创建动作
+    (1) 动作和路由要有绑定
+    (2) 读取数据、显示视图（把数据传递给视图）
+2. 定制路由：基本HTTP请求类型
+3. 创建视图文件
+    (1) 视图文件
+    (2) 视图文件中实现控制结构：循环、选择
+4. 从数据库中读取数据
+    (1) 模型类基本结构
+    (2) 如何获取所有数据
+        获取到的数据我们可以使用foreach循环结构依次处理每一个对象
+
+第11讲：留言板实例 —— 查看单个留言
+1. 绑定路由
+    方法主要有三种：resource路由（RESTful路由）、controller路由、手动Http请求类型路由。
+2. 控制器中创建动作
+    路由参数的获取，只是简单地通过方法的参数给出。
+3. 创建视图文件
+    blade模板的基本语法
+
+第12讲：添加留言
+1. CSRF保护
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+2. 接收表单数据
+    (1) 是否在路由器中使用闭包函数处理请求？
+        当动作只需要显示视图，或者不需要执行复杂逻辑时（不需要执行数据库操作时），可以直接闭包函数形式；而其它请求，建议使用控制器动作方式。
+    (2) 使用Request::input()方法来获取。
+3. 重定向
+    (1) redirect('url')实现重定向
+    (2) redirect()->route('login')，参数表示路由的名称
+
+第13讲：删除留言
+    模型类::destroy(主键)，代表删除指定主键的记录
+
+第14讲：修改留言
+
+第15讲：课程总结
+1. 已经学习到的知识点
+    (1) Composer的安装和使用方法
+    (2) 开发工具的使用：sublime text、phpstorm
+    (3) Laravel框架入门：
+        框架下载和安装：使用Composer实现
+        路由相关：HTTP请求类型的路由、RESTful路由、Controller路由
+        数据库相关：
+            artisan命令：本质上就是php文件，它是Laravel提供的命令行工具。
+            数据库迁移、数据库种子填充测试数据、数据库单个表的增、删、改、查操作。
+        控制器相关：控制器处理逻辑、方法和路由的绑定关系、动作和视图的关系。
+        视图相关：视图处理逻辑、blade模板的使用。
+2. Laravel框架精讲
+    (1) 剖析Laravel框架体系结构：目录结构、执行流程、特性
+    (2) 路由、控制器、视图、模型的使用方法
+    (3) 表单处理、表单验证
+    (4) provider、event
+    (5) 实例：
+        Ajax处理、文件上传、邮件发送、缓存、分页、……
