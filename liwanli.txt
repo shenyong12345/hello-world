@@ -1,2 +1,6 @@
 我是李万里添加的
+<<<<<<< HEAD
 liulitianjia
+=======
+liwanliqingjiale liulitianjia
+>>>>>>> a53797062bddf7f1b44dc56cf645f56e6002ba98
